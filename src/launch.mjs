@@ -34,7 +34,8 @@ export function verifyBinary(binary) {
   if (
     execFileSync(binary, ["--version"], {
       encoding: "utf8",
-      timeout: 5000,
+      // Defender can scan a fresh 300+ MB codex.exe for over a minute on first run.
+      timeout: 120_000,
     }).trim() !== "codex-cli 0.155.0-alpha.9.2"
   )
     throw new Error(

@@ -252,7 +252,7 @@ try {
   });
   assert.equal((await run(id, "adaptive-again")).status, "completed");
   assert.equal(states.length, 2);
-  rpc.stop();
+  await rpc.stop();
   await connect();
   const resumed = await rpc.call("thread/resume", { threadId: id });
   assert.equal(resumed.model, alias);
@@ -277,7 +277,7 @@ try {
       live[n].body.input.slice(0, live[n - 1].body.input.length),
       live[n - 1].body.input,
     );
-  rpc.stop();
+  await rpc.stop();
   await connect(false);
   const missing = await rpc.call("thread/start", {
     model: alias,

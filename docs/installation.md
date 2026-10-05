@@ -19,6 +19,8 @@ node bin/astra-ares.mjs
 
 Defaults live under your user profile: configuration in `%USERPROFILE%\.config\astra-ares\config.json` and data in `%USERPROFILE%\.local\share\astra-ares`. Setup installs `bin\codex.exe` and `bin\codex-code-mode-host.exe`, plus `codex-command-runner.exe` and `codex-windows-sandbox-setup.exe` for Codex's optional Windows sandbox. The config file's `0600` mode is not a Windows ACL: its privacy comes from the folder permissions, so keep any `ARES_CONFIG` or `ARES_HOME` override in a folder only you can read. The bridge uses a randomly named pipe instead of a Unix socket; see [architecture](architecture.md#bridge-transport).
 
+The first start after setup can take a minute while Microsoft Defender scans the new `codex.exe`. With Codex's optional Windows sandbox off, read-only mode with approval `never` (the `exec` defaults) refuses shell commands; this is upstream Codex behavior. Use interactive approvals, enable the Windows sandbox, or explicitly choose a less restrictive sandbox for that run.
+
 To update, quit Ares and update the checkout, then run `npm.cmd ci`, `npm.cmd run setup`, and `node bin/astra-ares.mjs resume --last`. To remove linked commands, run `npm.cmd unlink -g astra-ares`; delete the two folders above only if you also want to remove your key, builds, logs and sessions.
 
 ## From a source checkout (macOS and Linux)
@@ -41,7 +43,7 @@ Setup verifies the source archive and patch checksums, builds a separate Codex, 
 
 On macOS, setup preserves Rust symbol tables so proc-macro libraries can load on macOS 27. This increases build artifact size; it does not enable full debug information. See [build troubleshooting](troubleshooting.md#macos-mis-aligned-linkedit-string-pool) if an older checkout failed while loading `sqlx_macros`.
 
-This preview has no public npm release or prebuilt Ares binary. Use the repository source. Apple Silicon macOS has local build and runtime acceptance; Intel macOS and Linux need platform acceptance. Windows x64 builds and passes the native fixtures in CI; Windows ARM64 is untested.
+This preview has no public npm release or prebuilt Ares binary. Use the repository source. Apple Silicon macOS has local build and runtime acceptance; Intel macOS and Linux need platform acceptance. Windows 11 x64 has local build and runtime acceptance, and CI runs its native fixtures; Windows ARM64 is untested.
 
 ## Without global commands
 

@@ -32,7 +32,7 @@ You need **Node.js 22+**, npm, Git, curl, tar, a native C/C++ build toolchain, a
 | --------------------- | ----------------------------------------------- |
 | macOS · Apple Silicon | Built and tested locally                        |
 | macOS Intel / Linux   | Build paths provided; not yet acceptance-tested |
-| Windows x64           | Build and native fixtures run in CI             |
+| Windows x64           | Built and tested on Windows 11; CI-tested       |
 | Windows ARM64         | Build path provided; untested                   |
 
 ### 1. Install from source

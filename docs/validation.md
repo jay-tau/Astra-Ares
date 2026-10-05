@@ -36,7 +36,7 @@ For a custom binary path, set `JEV_TEST_BINARY` accordingly. The three suites ru
 | Session   | Settings acknowledged before inference; leases; accepted user input; cancellation; visible provider failure; ordinary-model bypass |
 | Selection | Native model selection, restart/resume, effort updates, original prefix retained, missing bridge rejected before inference         |
 
-Artifacts are written under ignored `work/` directories. Request-prefix preservation is not a measurement of production prompt-cache hit rate. Local build and runtime acceptance covers Apple Silicon macOS; other platform and long-session compaction coverage remains limited. CI runs unit tests and package checks on Linux, macOS and Windows. The manually dispatched native build runs setup and these fixtures on macOS and Windows x64. On Windows, that covers the named-pipe bridge and native checkpoints. Fixture tool calls do not exercise real Windows command execution or the optional elevated Windows sandbox, and do not establish provider quality or long-session reliability.
+Artifacts are written under ignored `work/` directories. Request-prefix preservation is not a measurement of production prompt-cache hit rate. Local build and runtime acceptance covers Apple Silicon macOS and Windows 11 x64; other platform and long-session compaction coverage remains limited. CI runs unit tests and package checks on Linux, macOS and Windows. The manually dispatched native build runs setup and these fixtures on macOS and Windows x64. On Windows, that covers the named-pipe bridge and native checkpoints. Fixture tool calls do not exercise real Windows command execution or the optional elevated Windows sandbox, and do not establish provider quality or long-session reliability.
 
 ## Live checks
 
